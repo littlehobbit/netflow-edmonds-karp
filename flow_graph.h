@@ -2,6 +2,7 @@
 #define FLOW_GRAPH_H
 
 #include <vector>
+#include <list>
 
 #include "graph.h"
 #include "edge.h"
@@ -9,9 +10,9 @@
 class flow_graph
 {
 public:
-    using adjacency_matrix = std::vector<std::vector<flow_edge>>;
-
     flow_graph(const graph& graph, int start, int stop);
+
+    ~flow_graph();
 
     bool consist_flow();
 
@@ -22,9 +23,8 @@ public:
     int calc_flow();
 
 private:
-    // TODO: store matrix of edges;
-    adjacency_matrix _matrix;
-    std::vector<int> _parents;
+    std::vector<std::list<flow_edge *>> _residual_graph;
+    std::vector<flow_edge *> _prev;
     int _start;
     int _stop;
 };

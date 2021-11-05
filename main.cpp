@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-    graph graph = graph_reader::from_file("graph.txt");
-    std::cout << graph.max_flow(1, 7) << std::endl;
+    graph graph = graph_reader::from_file("graph2.txt");
+    std::cout << graph.max_flow(1, 6) << std::endl;
     return 0;
 }

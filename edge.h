@@ -6,8 +6,8 @@ struct flow_edge
 {
     flow_edge() = default;
 
-    flow_edge(int capacity, int flow, int residual)
-        : capacity(capacity), flow(flow), residual(residual)
+    flow_edge(int from, int to, int capacity, int flow, int residual)
+        : from(from), to(to), capacity(capacity), flow(flow), residual(residual)
     {}
 
     bool is_valid()
@@ -15,16 +15,20 @@ struct flow_edge
         return residual > 0;
     }
 
-    int capacity = -1;
-    int flow = -1;
-    int residual = -1;
+    int to;
+    int from;
+    flow_edge *residual_edge;
+
+    int capacity = 0;
+    int flow = 0;
+    int residual = 0;
 };
 
 struct graph_edge
 {
     int from;
     int to;
-    int value;
+    int capacity;
 };
 
 #endif // EDGE_H

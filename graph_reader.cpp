@@ -37,5 +37,7 @@ graph graph_reader::from_file(const std::string &file_name)
         matrix[edge.from - 1][edge.to - 1] = edge.capacity;
     }
 
+    src.close();
+
     return graph(matrix);
 }

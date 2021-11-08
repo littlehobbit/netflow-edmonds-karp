@@ -38,6 +38,7 @@ flow_graph::~flow_graph()
     }
 }
 
+// Проверка и поиск аугментальной цепи в графе
 bool flow_graph::consist_flow()
 {
     std::queue<int> vertexes;
@@ -49,7 +50,6 @@ bool flow_graph::consist_flow()
     while (!vertexes.empty()) {
         int v = vertexes.front();
         vertexes.pop();
-
 
         for (flow_edge *edge : _residual_graph[v]) {
             if (!visited[edge->to] && edge->is_valid()) {
@@ -64,6 +64,7 @@ bool flow_graph::consist_flow()
     return false;
 }
 
+// Получение минимальной пропускной способности в найденном пути
 int flow_graph::get_min_flow_value()
 {
     flow_edge *iter = _prev[_stop];
@@ -75,6 +76,7 @@ int flow_graph::get_min_flow_value()
     return min_volume;
 }
 
+// Изменение величины потока по всему найденному пути
 void flow_graph::correct_flow_by_value(int value)
 {
     flow_edge *iter = _prev[_stop];
@@ -87,6 +89,7 @@ void flow_graph::correct_flow_by_value(int value)
     }
 }
 
+// Вычисление величины потока
 int flow_graph::calc_flow()
 {
     int flow = 0;

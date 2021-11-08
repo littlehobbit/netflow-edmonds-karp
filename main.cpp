@@ -3,8 +3,6 @@
 #include "graph.h"
 #include "graph_reader.h"
 
-using namespace std;
-
 int main()
 {
     graph graph = graph_reader::from_file("test2.txt");
